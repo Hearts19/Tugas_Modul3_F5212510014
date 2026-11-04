@@ -13,4 +13,4 @@ hasil = angka1+ angka2
 
 print(f"Status: Setup Berhasil!")
 print(f"Hasil Penjumlahan: {hasil}")
->>>>>>> 6eabe776df8c584b4edb441c223ed6c812d6e27c
+>>>>>>>
