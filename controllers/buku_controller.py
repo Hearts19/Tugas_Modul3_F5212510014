@@ -207,3 +207,45 @@ class BukuController:
     # Fungsi untuk menjalankan aplikasi
     def run(self):
         self.view.mainloop()
+
+# Letakkan baris ini di dalam fungsi inisialisasi (biasanya di bawah setup view/tabel)
+        self.view.tabel.bind("<<TreeviewSelect>>", self.isi_form_dari_baris)
+
+    # Letakkan fungsi ini sejajar dengan fungsi lainnya di dalam kelas BukuController
+    def _kosongkan_form(self):
+        self.view.entry_judul.delete(0, 'end')
+        self.view.entry_penulis.delete(0, 'end')
+        self.view.entry_tahun.delete(0, 'end')
+
+    def muat_data_tabel(self):
+        for item in self.view.tabel.get_children():
+            self.view.tabel.delete(item)
+
+        for buku in self.model.get_all_buku():
+            self.view.tabel.insert("", "end", values=(
+                buku['id_buku'], buku['judul'], buku['penulis'], buku['tahun_terbit']
+            ))
+
+    def isi_form_dari_baris(self, event):
+        if self.user_role != "admin":
+            return
+
+        selected = self.view.tabel.focus()
+        if not selected:
+            return
+        _, judul, penulis, tahun = self.view.tabel.item(selected)['values']
+
+        self._kosongkan_form()
+        self.view.entry_judul.insert(0, judul)
+        self.view.entry_penulis.insert(0, penulis)
+        self.view.entry_tahun.insert(0, tahun)
+
+        # Menambahkan ini
+        self.view.btn_logout.configure(command=self.logout)
+        
+        # Menambahkan ini
+    def logout(self):
+        if messagebox.askyesno("Logout", "Apakah Anda yakin ingin logout?"):
+            self.view.destroy()
+            from controllers.auth_controller import AuthController  # import di sini
+            AuthController().run()
