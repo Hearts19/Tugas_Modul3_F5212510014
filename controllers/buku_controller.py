@@ -239,3 +239,13 @@ class BukuController:
         self.view.entry_judul.insert(0, judul)
         self.view.entry_penulis.insert(0, penulis)
         self.view.entry_tahun.insert(0, tahun)
+
+        # Menambahkan ini
+        self.view.btn_logout.configure(command=self.logout)
+        
+        # Menambahkan ini
+    def logout(self):
+        if messagebox.askyesno("Logout", "Apakah Anda yakin ingin logout?"):
+            self.view.destroy()
+            from controllers.auth_controller import AuthController  # import di sini
+            AuthController().run()
