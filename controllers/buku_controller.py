@@ -250,5 +250,5 @@ class BukuController:
             from controllers.auth_controller import AuthController  # import di sini
             AuthController().run()
 
-            -   name: Lint dengan flake8
-                run: flake8 models/ controllers/ --count --select=E9,F63,F7,F82 --show-source --statistics
+            name: Lint dengan flake8
+            run: flake8 models/ controllers/ --count --select=E9,F63,F7,F82 --show-source --statistics
