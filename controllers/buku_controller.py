@@ -1,7 +1,7 @@
 import tkinter.messagebox as messagebox
 from models.buku_model import BukuModel
 from views.buku_view import BukuView
-#Muhammad Alfaizan_F5212520036
+#Cliff Sebastian_036
 
 class BukuController:
     def __init__(self, user_role="anggota"):
@@ -37,7 +37,7 @@ class BukuController:
                 values=(buku['id_buku'], buku['judul'], buku['penulis'], buku['tahun_terbit'])
             )
 
-#Muhammad Alfaizan_F5212520036
+#Cliff Sebastian_036
     def simpan_data(self):
         # Proteksi ganda di level Controller
         if self.user_role != "admin":

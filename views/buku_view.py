@@ -1,4 +1,4 @@
-#Muhammad Alfaizan Rifatullah_F5212520036
+#Cliff Sebastian_036
 import customtkinter as ctk
 from tkinter import ttk
 from views.login_view import LoginView
@@ -90,7 +90,7 @@ class BukuView(ctk.CTk):
             expand=True
         )
 
-        #Muhammad Alfaizan Rifatullah_F5212520036
+        #Cliff Sebastian_036
         # =====================================
         # FRAME KANAN: TABEL DAFTAR BUKU
         # =====================================

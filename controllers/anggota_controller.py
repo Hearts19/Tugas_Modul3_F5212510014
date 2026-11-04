@@ -1,4 +1,4 @@
-# Muhammad Alfaizan_F5212520036
+# Cliff Sebastian_036
 import tkinter.messagebox as messagebox
 from models.anggota_model import AnggotaModel
 from views.anggota_view import AnggotaView

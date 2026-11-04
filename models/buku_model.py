@@ -1,4 +1,4 @@
-#Muhammad Alfaizan_F5212520036
+#Cliff Sebastian_036
 from config.database import Database
 
 class BukuModel:
