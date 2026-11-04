@@ -1,12 +1,6 @@
-# Sistem Manajemen Perpustakaan
-
-## 1. Deskripsi Aplikasi
-
 Sistem Manajemen Perpustakaan merupakan aplikasi desktop berbasis Python yang digunakan untuk membantu pengelolaan data buku dan pengguna perpustakaan. Aplikasi ini menggunakan CustomTkinter sebagai antarmuka grafis dan MySQL sebagai sistem manajemen basis data.
 
 Aplikasi dikembangkan dengan menerapkan pola arsitektur Model-View-Controller (MVC) untuk memisahkan logika pengolahan data, tampilan antarmuka, dan pengendalian alur aplikasi.
-
-### Fitur Utama
 
 - Login dan autentikasi pengguna.
 - Registrasi akun pengguna.
@@ -18,8 +12,6 @@ Aplikasi dikembangkan dengan menerapkan pola arsitektur Model-View-Controller (M
 - Penyimpanan password dalam bentuk hash SHA-256.
 - Pengujian otomatis menggunakan pytest.
 - Pemeriksaan kualitas kode menggunakan flake8 melalui GitHub Actions CI Pipeline.
-
-## 2. Struktur Direktori MVC
 
 Struktur direktori proyek disusun sebagai berikut:
 
