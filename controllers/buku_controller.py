@@ -204,14 +204,27 @@ class BukuController:
                 "Gagal menghapus data buku!"
             )
 
-    # Fungsi untuk menjalankan aplikasi
-    def run(self):
-        self.view.mainloop()
+class BukuController:
+    def __init__(self, model, view, user_role):
+        self.model = model
+        self.view = view
+        self.user_role = user_role
 
-# Letakkan baris ini di dalam fungsi inisialisasi (biasanya di bawah setup view/tabel)
+        # Blok pembatasan role admin (jika ada)
+        if self.user_role != "admin":
+            # Contoh: Menonaktifkan form untuk petugas
+            self.view.entry_judul.config(state="readonly")
+            # ... (kode pembatasan lainnya)
+
+        # --- PERBAIKAN 1: Letakkan di dalam __init__, TAPI DI LUAR blok if di atas ---
+        self.view.btn_logout.configure(command=self.logout)
+
+        # Binding tabel
         self.view.tabel.bind("<<TreeviewSelect>>", self.isi_form_dari_baris)
+        
+        # Memuat data awal
+        self.muat_data_tabel()
 
-    # Letakkan fungsi ini sejajar dengan fungsi lainnya di dalam kelas BukuController
     def _kosongkan_form(self):
         self.view.entry_judul.delete(0, 'end')
         self.view.entry_penulis.delete(0, 'end')
@@ -239,13 +252,14 @@ class BukuController:
         self.view.entry_judul.insert(0, judul)
         self.view.entry_penulis.insert(0, penulis)
         self.view.entry_tahun.insert(0, tahun)
+        # (Tidak boleh ada kode logout di sini!)
 
-        # Menambahkan ini
-        self.view.btn_logout.configure(command=self.logout)
-        
-        # Menambahkan ini
+    # --- PERBAIKAN 2: Fungsi logout diletakkan sejajar dengan fungsi lain (di luar fungsi di atas) ---
     def logout(self):
         if messagebox.askyesno("Logout", "Apakah Anda yakin ingin logout?"):
             self.view.destroy()
             from controllers.auth_controller import AuthController  # import di sini
             AuthController().run()
+
+    def run(self):
+        self.view.mainloop()
